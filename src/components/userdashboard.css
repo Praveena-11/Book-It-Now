@@ -1,0 +1,184 @@
+/* Overall layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f9fafb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color:#358b6e; /* Indigo */
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.admin-search {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-item {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main content */
+.dashboard-content {
+  flex: 1;
+  padding: 30px 40px;
+  background-color: #f3f4f6;
+  overflow-y: auto;
+}
+
+.dashboard-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Calendar section */
+.calendar-section {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  width: fit-content;
+}
+
+.react-calendar {
+  border: none;
+  font-size: 16px;
+}
+
+.react-calendar__tile--now {
+  background: #e0e7ff;
+}
+
+.react-calendar__tile--active {
+  background:#10b981 !important;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Slot selection */
+.slot-selection {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.slot-selection h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time-slot-btn {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #e0e7ff;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.time-slot-btn:hover {
+  background-color: #c7d2fe;
+}
+
+.time-slot-btn.selected {
+  background-color: #10b981;
+  color: white;
+}
+
+/* Reason text area */
+.reason-input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 15px;
+}
+
+/* Book button */
+.book-btn {
+  width: 20%;
+  padding: 14px;
+  background-color: #10b981;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-items: center;
+}
+
+.book-btn:hover {
+  background-color: #059669;
+}
+
+/* Appointments List */
+.appointments-list {
+  margin-top: 40px;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.appointment-card {
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.appointment-card:last-child {
+  border-bottom: none;
+}
+
+.appointment-card strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.appointment-card em {
+  font-style: italic;
+  color: #666;
+}

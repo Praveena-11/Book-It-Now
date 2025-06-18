@@ -1,0 +1,41 @@
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 168, 89, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 1rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-filled-green {
+  background-color: #009e5f; /* Updated to a deeper green */
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-filled-green:hover {
+  background-color: #007a48; /* Darker shade on hover */
+}
