@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './UserDashboard.css';
+import './userdashboard.css';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -12,6 +13,10 @@ const UserDashboard = () => {
   const [admins, setAdmins] = useState([]);
   const [selectedAdmin, setSelectedAdmin] = useState(null);
   const [appointments, setAppointments] = useState([]);
+ const [user, setUser] = useState(null);
+const [showProfile, setShowProfile] = useState(false);
+
+
 
   const times = [
     '09:00 AM', '09:10 AM', '09:20 AM', '09:30 AM', '09:40 AM',
@@ -34,7 +39,21 @@ const UserDashboard = () => {
         console.error('Error fetching admins:', err);
       }
     };
+
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const res = await API.get('/auth/me', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(res.data);
+      } catch (err) {
+        console.error('Failed to fetch user profile:', err);
+      }
+    };
+
     fetchAdmins();
+    fetchUserProfile();
   }, []);
 
   const fetchAppointments = async () => {
@@ -83,6 +102,17 @@ const UserDashboard = () => {
       )
     : admins;
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+  localStorage.removeItem('token'); // Remove token
+  navigate('/'); // Redirect to landing page
+};
+
+  const getColor = (char) => {
+    const colors = ['#e57373', '#64b5f6', '#81c784', '#ffd54f', '#4db6ac'];
+    return colors[char.charCodeAt(0) % colors.length];
+  };
+
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
@@ -120,11 +150,33 @@ const UserDashboard = () => {
           </div>
         )}
 
-        <div className="calendar-section">
-          <Calendar
-            onChange={setSelectedDate}
-            value={selectedDate}
-          />
+        <div className="calendar-profile-wrapper">
+          <div className="calendar-section">
+            <Calendar
+              onChange={setSelectedDate}
+              value={selectedDate}
+            />
+          </div>
+{user && (
+  <div className="profile-dropdown-container">
+    <div
+      className="profile-avatar"
+      onClick={() => setShowProfile(!showProfile)}
+    >
+      {user.name.charAt(0).toUpperCase()}
+    </div>
+
+    {showProfile && (
+      <div className="profile-dropdown">
+        <p><strong>{user.name}</strong></p>
+        <p>{user.email}</p>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+      </div>
+    )}
+  </div>
+)}
+
+
         </div>
 
         <div className="slot-selection">

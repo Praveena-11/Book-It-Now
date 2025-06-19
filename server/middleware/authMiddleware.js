@@ -1,3 +1,4 @@
+// middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -24,7 +25,7 @@ const protect = async (req, res, next) => {
   }
 };
 
-// Middleware to allow only admin users
+// ✅ Add this middleware for admin-only access
 const adminOnly = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     return next();
@@ -32,7 +33,9 @@ const adminOnly = (req, res, next) => {
   return res.status(403).json({ msg: 'Access denied: Admins only' });
 };
 
+// ✅ Export both
 module.exports = { protect, adminOnly };
+
 
 
 // const express = require('express');

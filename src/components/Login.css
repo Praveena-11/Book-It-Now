@@ -1,43 +1,105 @@
 .auth-container {
-  max-width: 400px;
-  margin: 100px auto;
-  background: #ffffff;
-  padding: 2rem;
+  max-width: 420px;
+  margin: 6rem auto;
+  background-color: #ffffff;
+  padding: 2.5rem 2rem;
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 168, 89, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 168, 89, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.auth-container:hover {
+  transform: translateY(-4px);
 }
 
 .auth-container h2 {
   margin-bottom: 1.5rem;
-  color: #111;
+  font-size: 1.8rem;
+  color: #00a859;
+  font-weight: 700;
+}
+
+.auth-container p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.8rem;
 }
 
 .auth-container input,
 .auth-container select {
   width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 1rem;
-  border: 1px solid #d9d9d9;
-  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
   font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-container input:focus,
+.auth-container select:focus {
+  border-color: #00a859;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 168, 89, 0.15);
 }
 
 .btn-filled-green {
-  background-color: #009e5f; /* Primary green */
+  background-color: #00a859;
   color: white;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .btn-filled-green:hover {
-  background-color: #007a48;
+  background-color: #008e4a;
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+  .auth-container {
+    max-width: 90%;
+    margin: 5rem auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn-filled-green {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
+
+/* Responsive Design for Phones */
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 3rem 1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .auth-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .auth-container input,
+  .auth-container select {
+    font-size: 0.95rem;
+  }
+
+  .btn-filled-green {
+    font-size: 0.9rem;
+  }
 }

@@ -10,7 +10,6 @@ const AdminDashboard = () => {
   const [approvedAppointments, setApprovedAppointments] = useState([]);
   const [adminName, setAdminName] = useState('');
 
-  // Fetch admin info and their appointments
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
@@ -19,9 +18,11 @@ const AdminDashboard = () => {
           headers: { Authorization: `Bearer ${token}` }
         });
         setAppointments(res.data);
+
         const approved = res.data.filter(appt => appt.status === 'approved');
         setApprovedAppointments(approved);
-        setAdminName(res.data[0]?.adminName || 'Admin');
+
+        setAdminName(res.data[0]?.adminId?.name || 'Admin');
       } catch (err) {
         console.error('Error fetching appointments:', err);
       }
@@ -29,7 +30,6 @@ const AdminDashboard = () => {
     fetchAppointments();
   }, []);
 
-  // Approve appointment
   const handleApprove = async (id) => {
     try {
       const token = localStorage.getItem('token');
@@ -47,7 +47,6 @@ const AdminDashboard = () => {
     }
   };
 
-  // Reject appointment
   const handleReject = async (id) => {
     try {
       const token = localStorage.getItem('token');
@@ -62,6 +61,11 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   return (
     <div className="admin-dashboard">
       <h2>Welcome, {adminName}</h2>
@@ -72,6 +76,11 @@ const AdminDashboard = () => {
           <p><strong>Name:</strong> {adminName}</p>
           <p><strong>Pending Requests:</strong> {appointments.filter(a => a.status === 'pending').length}</p>
           <p><strong>Approved:</strong> {approvedAppointments.length}</p>
+
+          {/* ✅ Logout Button */}
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
 
         <div className="calendar-box">
@@ -79,7 +88,9 @@ const AdminDashboard = () => {
             onChange={setSelectedDate}
             value={selectedDate}
             tileClassName={({ date }) =>
-              approvedAppointments.find(appt => new Date(appt.date).toDateString() === date.toDateString())
+              approvedAppointments.find(appt =>
+                new Date(appt.date).toDateString() === date.toDateString()
+              )
                 ? 'highlight'
                 : ''
             }
@@ -91,7 +102,7 @@ const AdminDashboard = () => {
         <h3>Schedule Requests</h3>
         {appointments.filter(a => a.status === 'pending').map((req) => (
           <div key={req._id} className="request-card">
-            <p><strong>{req.userName}</strong> requested for {req.date} at {req.time}</p>
+            <p><strong>{req.userId?.name || 'User'}</strong> requested for {req.date} at {req.time}</p>
             <p><em>Reason:</em> {req.reason}</p>
             <button className="approve-btn" onClick={() => handleApprove(req._id)}>Approve</button>
             <button className="reject-btn" onClick={() => handleReject(req._id)}>Reject</button>
@@ -103,7 +114,7 @@ const AdminDashboard = () => {
         <h3>Approved Schedules</h3>
         {approvedAppointments.map((appt, i) => (
           <div key={i} className="approved-card">
-            <p><strong>{appt.userName}</strong> — {appt.date} at {appt.time}</p>
+            <p><strong>{appt.userId?.name || 'User'}</strong> — {appt.date} at {appt.time}</p>
             <p><em>{appt.reason}</em></p>
           </div>
         ))}

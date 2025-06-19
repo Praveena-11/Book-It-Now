@@ -23,6 +23,7 @@ exports.getUserAppointments = async (req, res) => {
 
 exports.getAdminAppointments = async (req, res) => {
   const appts = await Appointment.find({ adminId: req.user._id }).populate('userId', 'name email');
+  
   res.json(appts);
 };
 

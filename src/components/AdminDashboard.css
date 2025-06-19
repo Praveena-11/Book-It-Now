@@ -1,74 +1,128 @@
 .admin-dashboard {
-  background-color: #f7f7ff;
-  padding: 20px 40px;
+  padding: 30px 40px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-h2 {
-  color: #300849;
-  margin-bottom: 20px;
+/* Heading */
+.admin-dashboard h2 {
+  color: #00a859;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
 }
 
+/* Profile summary */
 .profile-summary {
   display: flex;
-  gap: 40px;
+  gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
 
+/* Profile card */
 .admin-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(153, 102, 255, 0.2);
-  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 168, 89, 0.1);
+  padding: 24px;
   width: 280px;
+  height: 210px;
 }
 
+.admin-card h4 {
+  font-size: 1.2rem;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.admin-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Calendar */
 .calendar-box {
   background: white;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(153, 102, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 168, 89, 0.1);
+  margin-left: 100px;
 }
 
+/* Highlighted date */
 .highlight {
-  background-color: #8000ff !important;
+  background-color: #00a859 !important;
   color: white !important;
   border-radius: 50% !important;
 }
 
+/* Sections */
 .request-section,
 .approved-section {
   margin-top: 30px;
 }
 
+/* Cards */
 .request-card,
 .approved-card {
-  background: #fff;
+  background: white;
   margin-bottom: 16px;
-  padding: 15px 20px;
-  border-left: 6px solid #8000ff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 20px;
+  border-left: 6px solid #00a859;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
 }
 
+.request-card:hover,
+.approved-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Buttons */
 .approve-btn,
 .reject-btn {
-  margin-right: 10px;
-  margin-top: 8px;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .approve-btn {
-  background-color: #28a745;
+  background-color: #00a859;
   color: white;
 }
 
+.approve-btn:hover {
+  background-color: #059669;
+}
+
 .reject-btn {
-  background-color: #dc3545;
+  background-color: #ef4444;
   color: white;
+}
+
+.reject-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-summary {
+    flex-direction: column;
+  }
+
+  .admin-card,
+  .calendar-box {
+    width: 100%;
+  }
+
+  .admin-dashboard {
+    padding: 20px;
+  }
 }

@@ -9,6 +9,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
   color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Wrapper */
@@ -25,14 +27,16 @@ body {
   align-items: center;
   padding: 1.5rem 4rem;
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   z-index: 1000;
+  position: relative;
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
   color: #00a859;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 /* Nav Buttons */
@@ -50,11 +54,13 @@ body {
   border: 2px solid #00a859;
   color: #00a859;
   background-color: transparent;
+  margin: 20px;
 }
 
 .btn-outline-green:hover {
   background-color: #00a859;
   color: white;
+   margin-right: 20px;
 }
 
 .btn-filled-green {
@@ -69,30 +75,72 @@ body {
 
 /* Hero Section */
 .hero-section {
-  text-align: center;
-  padding: 6rem 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 4rem;
   background: linear-gradient(to right, #e6f9ef, #f0fdf5);
+  gap: 3rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.hero-content {
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
   color: #1d1d1d;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  white-space: pre-line;
+  animation: fadeIn 0.8s ease;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   color: #555;
-  max-width: 680px;
-  margin: 0 auto 2.5rem;
+  max-width: 600px;
+  margin-bottom: 1.8rem;
+  white-space: pre-line;
+  line-height: 1.7;
+  animation: fadeIn 1.2s ease;
 }
 
-.hero-buttons {
+.hero-action {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
-  flex-wrap: wrap;
+  animation: fadeIn 1.4s ease;
+}
+
+.hero-button {
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #00a859;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #008e4a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 168, 89, 0.3);
+}
+
+.hero-image {
+  flex: 1;
+  max-width: 420px;
+  height: auto;
+  animation: fadeInUp 1.5s ease;
 }
 
 /* Description Section */
@@ -143,6 +191,28 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-action {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .hero-button {
+    width: 200px;
+  }
+}
+
 @media (max-width: 768px) {
   .landing-header {
     flex-direction: column;
@@ -158,10 +228,6 @@ body {
     font-size: 2.3rem;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
-
   .steps {
     flex-direction: column;
     align-items: center;
@@ -170,4 +236,82 @@ body {
   .step {
     width: 90%;
   }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.landing-footer {
+  background-color: #f5fdf9;
+  padding: 1.5rem 2rem 1rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo h4 {
+  color: #00a859;
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.footer-logo p {
+  color: #666;
+  margin: 0;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  color: #00a859;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #008e4a;
+}
+
+.footer-contact p {
+  color: #555;
+  margin: 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #999;
+  margin-top: 1rem;
+  font-size: 0.75rem;
 }
