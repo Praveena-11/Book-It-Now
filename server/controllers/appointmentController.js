@@ -1,4 +1,4 @@
-const Appointment = require('../models/Appointment');
+const Appointment = require('../models/appointment');
 
 exports.bookAppointment = async (req, res) => {
   const { adminId, date, time, reason } = req.body;
