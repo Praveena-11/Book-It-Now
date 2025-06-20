@@ -214,7 +214,7 @@ const [showProfile, setShowProfile] = useState(false);
               <strong>{new Date(appt.date).toDateString()}</strong> - {appt.time}<br />
               <em>{appt.reason}</em><br />
               <span>Status: {appt.status}</span><br />
-              <span>Admin: {appt.adminName}</span>
+              <span>Admin: {appt.adminId?.name || 'N/A'}</span>
             </div>
           ))}
         </div>

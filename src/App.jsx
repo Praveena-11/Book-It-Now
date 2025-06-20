@@ -4,8 +4,8 @@ import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
 import Home from './components/Home';
 import './App.css';
-import UserDashboard from './components/Userdashboard';
 import Signup from './components/SignUp';
+import UserDashboard from './components/UserDashboard';
 
 function App() {
   return (

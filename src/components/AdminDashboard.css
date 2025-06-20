@@ -55,7 +55,6 @@
   color: white !important;
   border-radius: 50% !important;
 }
-
 /* Sections */
 .request-section,
 .approved-section {
@@ -72,6 +71,8 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   transition: transform 0.2s ease;
+  width: 50%
+  
 }
 
 .request-card:hover,
