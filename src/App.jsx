@@ -4,7 +4,7 @@ import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
 import Home from './components/Home';
 import './App.css';
-import Signup from './components/SignUp';
+import Signup from './components/Signup';
 import UserDashboard from './components/UserDashboard';
 
 function App() {
